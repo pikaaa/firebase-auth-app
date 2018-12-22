@@ -74,7 +74,7 @@ class CheckBox extends PureComponent < CheckboxProps, CheckboxStates > {
       <View style={ styles.containerStyle }>
         { this.renderCheckbox() }
 
-        <TouchableWithoutFeedback onPress={this.renderAlert}>
+        <TouchableWithoutFeedback onPress={this.renderAlert} >
           <Text
           numberOfLines={2}
           style={ styles.label }
@@ -88,13 +88,11 @@ class CheckBox extends PureComponent < CheckboxProps, CheckboxStates > {
 
   renderAlert() {
     Alert.alert(
-      'Terms & Conditions',
-      "Avegen Health™ is provided by Avegen Health (\“AVGN\”) and references to “we\”, \“us\” or \“our\” are to AVGN.\
-      1. The Agreement between us\
-      1.1 Your use of the Sign-Up website (the \“Site\”) and the Sign-Up data processing services (together, the \“Services\”) are subject to you accepting the following Terms and Conditions of Use and Privacy Policy (together, the \“Terms of Use\”).\
-      1.2 Your acceptance of the Terms of Use shall be indicated by you clicking on the \“Accept\” box at the bottom of this document and your continued use of the Services. If you do not accept all the Terms of Use, you must click the \“Decline\” box at the bottom of this document and you must not continue to register to use the Services.\
-      1.3 Any error or omission of any information that we publish about the Services shall be subject to correction, provided that the correction does not materially affect the Services.",
-      { cancelable: false }
+      `'Terms & Conditions',
+      "Avegen Health™ is provided by Avegen Health (\“AVGN\”) and references to “we\”, \“us\” or \“our\” are to AVGN.\n
+      1. Your use of the Sign-Up website (the \“Site\”) and the Sign-Up data processing services (together, the \“Services\”) are subject to you accepting the following Terms and Conditions of Use and Privacy Policy (together, the \“Terms of Use\”).\n
+      2. Your acceptance of the Terms of Use shall be indicated by you clicking on the \“Accept\” box at the bottom of this document and your continued use of the Services. If you do not accept all the Terms of Use, you must click the \“Decline\” box at the bottom of this document and you must not continue to register to use the Services.\n
+      3. Any error or omission of any information that we publish about the Services shall be subject to correction, provided that the correction does not materially affect the Services."`
     )
   }
 
@@ -127,6 +125,7 @@ const styles = StyleSheet.create({
     marginTop:2,
     color: '#0078ff',
     marginLeft: 10,
+    textAlign: 'left',
   }
 });
 
