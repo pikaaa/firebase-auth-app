@@ -9,7 +9,8 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import firebase from 'firebase';
+import firebase from '@firebase/app';
+import '@firebase/auth';
 import { InputField, Spinner, CheckBox } from '../components';
 import {validateEmail} from '../utils/validations';
 
@@ -137,8 +138,9 @@ class SignUp extends Component<SignUpProps> {
           onChangeText={this.onChangeText.bind(this)}
           />
 
-          { this.state.showEmailError &&
+          { this.state.showEmailError ?
             <Text style={styles.invalidEmail}>Please enter a valid email</Text>
+            :null
           }
 
           <InputField

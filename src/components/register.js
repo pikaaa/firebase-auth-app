@@ -9,7 +9,8 @@ import {
   Button,
   Alert,
 } from 'react-native';
-import firebase from 'firebase';
+import firebase from '@firebase/app';
+import '@firebase/auth';
 import { InputField, Spinner } from './index';
 import {validateEmail} from '../utils/validations';
 
@@ -78,8 +79,8 @@ export default class Register extends Component<Props> {
   readUserData(email) {
     firebase.database().ref('users/').on('value', function (snapshot) {
       Object.values(snapshot.val()).map((user) => {
-        console.log('user:'+user+' === email'+email);
-        if (user.email === email){
+        console.log('user:'+user.email+' === email'+email);
+        if (user.email == email){
           //renderAlert(user.username);
           Alert.alert(
             'Welcome '+user.username,
@@ -88,9 +89,8 @@ export default class Register extends Component<Props> {
               {text: 'OK'},
             ],
             { cancelable: false }
-          )
-        } else {
-          Alert.alert('Invalid User please check your credentials');
+          );
+          return;
         }
       })
     });
@@ -118,8 +118,9 @@ export default class Register extends Component<Props> {
           onChangeText={this.onChangeText.bind(this)}
           />
 
-          { this.state.showEmailError &&
+          { this.state.showEmailError ?
             <Text style={styles.invalidEmail}>Please enter a valid email</Text>
+            : null
           }
 
           <InputField

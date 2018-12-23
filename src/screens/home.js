@@ -8,12 +8,11 @@ import {
   Dimensions,
 } from 'react-native';
 import Avegen from '../assets/avegen_logo.png';
-import firebase from 'firebase';
 
 export default class Home extends Component<Props> {
   componentWillMount() {
     // var database = firebase.database();
-
+    const firebase = require("firebase");
     let app = firebase.initializeApp({
       apiKey: "AIzaSyB0_1M36UK52LHma_rkKUfhiJoI5WQCvQg",
       authDomain: "registration-9ccd2.firebaseapp.com",
